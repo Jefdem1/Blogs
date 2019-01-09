@@ -115,7 +115,7 @@ def gettemp():
 
     if len(lengths) != 40:
         jeffresults = "missing data"
-        print("missing data")
+        #print("missing data")
     else:
         bits = []
         shortest_pull_up = 1000
@@ -152,19 +152,13 @@ def gettemp():
         checksum = the_bytes[0] + the_bytes[1] + the_bytes[2] + the_bytes[3] & 255
         if the_bytes[4] != checksum:
             jeffresults = "Checksum Failed"
-            print(jeffresults)
+            #print(jeffresults)
         else:
             th.append((9.0 / 5.0 * int(the_bytes[2]) + 32))
             th.append(the_bytes[0])
     return th
                 #print(9.0 / 5.0 * int(the_bytes[2]) + 32)
                 #print(the_bytes[0])
-
-
-
-
-
-
 
 
 for i in range(CALIBARAION_SAMPLE_TIMES):
@@ -217,10 +211,13 @@ while True:
     output += '"CO":"' + str(gas[1]) + '",'
     output += '"Smoke":"' + str(gas[2]) + '"'
     output += '}'
-    #iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
+    iotresults = False
+    while (iotresults == False):
+        iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
+        time.sleep(3)
     print(output)
-    #print("Posted: " + str(iotresults))
-    time.sleep(9)
+    print("Posted: " + str(iotresults))
+    time.sleep(20)
 
 #getgas()
 #gettemp()
