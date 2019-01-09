@@ -214,7 +214,7 @@ while True:
     iotresults = False
     while (iotresults == False):
         iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
-        time.sleep(3)
+        time.sleep(60)
     print(output)
     #print("Posted: " + str(iotresults))
     time.sleep(20)
