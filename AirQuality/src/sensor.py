@@ -24,7 +24,7 @@ pin=0  #adc channel
 LPGCurve = [2.3,0.21,-0.47]    # two points are taken from the curve. 
 COCurve = [2.3,0.72,-0.34]     # two points are taken from the curve. 
 SmokeCurve =[2.3,0.53,-0.44]   # two points are taken from the curve. 
-#print("Calibrating...")
+print("Calibrating")
 val = 0.0
 raw_adc = 0
 myAWSIoTMQTTClient = None
@@ -202,8 +202,8 @@ while True:
     while (not th):
         th = gettemp()
     output = '{'
-    output += '"Temperature":"' + str(th[0]) + '",'
-    output += '"Humidity":"' + str(th[1]) + '",'
+    output += '"Temperature":"' + str(int(th[0])) + '",'
+    output += '"Humidity":"' + str(int(th[1])) + '",'
     output += '"TTL":' + str(int(time.time() + 86400)) + ','
     output += '"Timestamp":' + str(int(time.time())) + ','
     output += '"Location":"Outside",'
@@ -216,7 +216,7 @@ while True:
         iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
         time.sleep(3)
     print(output)
-    print("Posted: " + str(iotresults))
+    #print("Posted: " + str(iotresults))
     time.sleep(20)
 
 #getgas()
