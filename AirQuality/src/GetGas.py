@@ -42,7 +42,9 @@ val = val/RO_CLEAN_AIR_FACTOR
 Ro = val
 val = {}
 rs = 0.0
-while True:
+def getgas():
+    raw_adc = 0
+    rs = 0.0
     for i in range(READ_SAMPLE_TIMES):
         while (raw_adc == 0):
             raw_adc = read(pin)
@@ -65,5 +67,7 @@ while True:
     print(output)
     time.sleep(10)
 
+getgas()
+getgas()
 #spi.close()
 #print(read(pin))
