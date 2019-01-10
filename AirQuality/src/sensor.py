@@ -202,8 +202,8 @@ while True:
     while (not th):
         th = gettemp()
     output = '{'
-    output += '"Temperature":"' + str(int(th[0])) + '",'
-    output += '"Humidity":"' + str(int(th[1])) + '",'
+    output += '"Temperature":' + str(int(th[0])) + ','
+    output += '"Humidity":' + str(int(th[1])) + ','
     output += '"TTL":' + str(int(time.time() + 86400)) + ','
     output += '"Timestamp":' + str(int(time.time())) + ','
     output += '"Location":"Outside",'
