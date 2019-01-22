@@ -73,5 +73,5 @@ output += '"Location":"Outside",'
 output += '"Latitude":"' + str(Latitude) + '",'
 output += '"Longitude":"' + str(Longitude) + '"'
 output += '}'
-#iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
+#iotresults = myAWSIoTMQTTClient.publish('sdk/test/gps', output, 1)
 print(output)
