@@ -206,7 +206,7 @@ while True:
     output += '"Humidity":' + str(int(th[1])) + ','
     output += '"TTL":' + str(int(time.time() + 86400)) + ','
     output += '"Timestamp":' + str(int(time.time())) + ','
-    output += '"Location":"Outside",'
+    output += '"Location":"' + socket.gethostname() + '",'
     output += '"LPG":"' + str(gas[0]) + '",'
     output += '"CO":"' + str(gas[1]) + '",'
     output += '"Smoke":"' + str(gas[2]) + '"'
