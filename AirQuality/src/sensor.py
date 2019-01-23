@@ -2,6 +2,7 @@ import time
 import RPi.GPIO
 import sys
 import math
+import socket
 from spidev import SpiDev
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 
@@ -213,8 +214,12 @@ while True:
     output += '}'
     iotresults = False
     while (iotresults == False):
-        iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)
-        time.sleep(60)
+        try:
+            iotresults = myAWSIoTMQTTClient.publish('sdk/test/Python', output, 1)       
+        except:
+            time.sleep(5)
+        time.sleep(5)
+    time.sleep(60)
     print(output)
     #print("Posted: " + str(iotresults))
     time.sleep(20)
