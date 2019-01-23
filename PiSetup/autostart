@@ -1,0 +1,8 @@
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+point-rpi
+@chromium-browser --incognito --kiosk https://pigplf2fq8.execute-api.us-east-1.amazonaws.com/Production/pictures/stocks?home=true
+@lxterminal -e python /home/pi/Desktop/AutoBright.py
+@lxterminal -e python /home/pi/Blogs/AirQuality/src/sensor.py
+@lxterminal -e bash /home/pi/Desktop/LaunchSSM.sh
